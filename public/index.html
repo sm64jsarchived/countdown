@@ -6,12 +6,18 @@
 <style>
   body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
+  }
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    text-align: center;
   }
   #countdown {
     font-size: 2rem;
@@ -24,6 +30,7 @@
 </style>
 </head>
 <body>
+<h2>Large Server Test Countdown</h2>
 <div id="countdown"></div>
 
 <script src="https://cdn.socket.io/4.8.1/socket.io.min.js" integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" crossorigin="anonymous"></script>
