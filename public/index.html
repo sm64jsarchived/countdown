@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Countdown</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+  }
+  #countdown {
+    font-size: 2rem;
+    text-align: center;
+    padding: 1rem 2rem;
+    background-color: #f2f2f2;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+  }
+</style>
+</head>
+<body>
+<div id="countdown"></div>
+
+<script src="https://cdn.socket.io/4.8.1/socket.io.min.js" integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" crossorigin="anonymous"></script>
+<script>
+const countdown = document.getElementById('countdown')
+const socket = io()
+
+socket.on('countdown', remaining => {
+  if (remaining <= 0) {
+    countdown.innerText = "Doomsday has begun"
+    return
+  }
+
+  const days = Math.floor(remaining / (1000 * 60 * 60 * 24))
+  const hours = Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+  const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60))
+  const seconds = Math.floor((remaining % (1000 * 60)) / 1000)
+
+  countdown.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`
+})
+</script>
+</body>
+</html>
